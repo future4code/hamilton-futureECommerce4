@@ -10,6 +10,7 @@ import styled from 'styled-components';
             background-color: #2d3436;
             font-weight: bolder;
             font-size: 100%;
+            grid-row: 4;
         `
         const ImgLogo = styled.img `
             width: 100px;
@@ -40,7 +41,7 @@ class Footer extends React.Component {
         <FooterDiv>
             <Title>Desenvolvido por:</Title>
             <ListaDevs>
-                <ItensDevs>Ricardo Araújo</ItensDevs>
+                <ItensDevs>Ricardo Araujo</ItensDevs>
                 <ItensDevs>Igor Delespoti</ItensDevs>
                 <ItensDevs>João Pedro Fonseca</ItensDevs>
             </ListaDevs>

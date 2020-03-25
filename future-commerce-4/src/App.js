@@ -8,7 +8,8 @@ import Footer from './Components/Footer';
 
 
 const Container = styled.div`
-  
+  display:grid;
+  grid-template-rows: 20vh 8vh 100vh 20vh;
 `
 
 
@@ -18,7 +19,6 @@ function App() {
     <Container>
           <Header />
           <NavBar />
-          {/* <CarrinhoCompra />*/}
           <Display />
           <Footer />
     </Container>
