@@ -7,20 +7,20 @@ import Display from './Components/Display';
 import Footer from './Components/Footer';
 
 
-
 const Container = styled.div`
   
 `
+
+
 
 function App() {
   return (
     <Container>
           <Header />
-          {/* <NavBar />
-          <CarrinhoCompra />
-          <Display />*/}
-          <Footer /> 
-
+          <NavBar />
+          {/* <CarrinhoCompra />*/}
+          <Display />
+          <Footer />
     </Container>
   );
 }
