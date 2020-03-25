@@ -7,10 +7,11 @@ import Display from './Components/Display';
 import Footer from './Components/Footer';
 
 
-
 const Container = styled.div`
   
 `
+
+
 
 function App() {
   return (
@@ -20,7 +21,6 @@ function App() {
           {/* <CarrinhoCompra />
           <Display />
           <Footer /> */}
-
     </Container>
   );
 }
