@@ -16,10 +16,10 @@ function App() {
   return (
     <Container>
           <Header />
-          <NavBar />
+          {/* <NavBar />
           <CarrinhoCompra />
-          <Display />
-          <Footer />
+          <Display />*/}
+          <Footer /> 
 
     </Container>
   );
