@@ -15,11 +15,11 @@ const Container = styled.div`
 function App() {
   return (
     <Container>
-          <Header />
+          {/* <Header />  */}
           <NavBar />
-          <CarrinhoCompra />
+          {/* <CarrinhoCompra />
           <Display />
-          <Footer />
+          <Footer /> */}
 
     </Container>
   );
