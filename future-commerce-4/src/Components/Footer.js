@@ -26,9 +26,9 @@ import styled from 'styled-components';
         const ItensDevs = styled.li `
         	display: inline;
 	        padding: 0px 8px;
-
         `
-
+        const DivForOrganize = styled.div `
+        `
 
 class Footer extends React.Component {
   

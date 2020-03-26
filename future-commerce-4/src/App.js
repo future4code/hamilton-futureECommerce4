@@ -9,7 +9,7 @@ import Footer from './Components/Footer';
 
 const Container = styled.div`
   display:grid;
-  grid-template-rows: 20vh 8vh 100vh 20vh;
+  grid-template-rows: 15vh 8vh 100vh 20vh;
 `
 
 
