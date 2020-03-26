@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
         const HeaderDiv = styled.div `
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(13, 1fr);
             align-items: center;
             padding: 5px;
             background-color: #a29bfe;
+            min-height: 140px;
         `
         const ImgLogo = styled.img `
             width: 100px;
@@ -16,13 +17,13 @@ import styled from 'styled-components';
         const Title = styled.h1 `
             color: #2d3436;
             font-weight: bolder;
-            font-family: Rob;
         `
         const DivLogo = styled.div `
             grid-column: 2;
         `
         const DivTitle = styled.div `
-            grid-column: 4/13;
+             grid-column: 3/12; 
+            margin: 0 auto;
         `
 class Header extends React.Component {
   

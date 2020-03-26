@@ -11,13 +11,13 @@ import styled from 'styled-components';
             font-weight: bolder;
             font-size: 100%;
             grid-row: 4;
+            min-height: 140px;
         `
-        const ImgLogo = styled.img `
-            width: 100px;
-            height: 100px;
-        `
+        
         const Title = styled.p `
             color: #a29bfe;
+            margin: 0px;
+            padding: 0px;
         `
         const ListaDevs = styled.ul `
         	list-style: none;
@@ -28,6 +28,17 @@ import styled from 'styled-components';
 	        padding: 0px 8px;
         `
         const DivForOrganize = styled.div `
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        `
+        const LinksSocialWebs = styled.a `
+            color: #a29bfe;
+            text-decoration: none;
+            font-size: 30px;
+        :hover {
+            color: #FFC0CB;
+        }
         `
 
 class Footer extends React.Component {
@@ -39,12 +50,25 @@ class Footer extends React.Component {
           
     return (
         <FooterDiv>
-            <Title>Desenvolvido por:</Title>
-            <ListaDevs>
-                <ItensDevs>Ricardo Araujo</ItensDevs>
-                <ItensDevs>Igor Delespoti</ItensDevs>
-                <ItensDevs>João Pedro Fonseca</ItensDevs>
-            </ListaDevs>
+            <DivForOrganize>
+                <ListaDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-facebook"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-instagram"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-google"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-pinterest"></i></LinksSocialWebs></ItensDevs>
+                </ListaDevs>
+            </DivForOrganize>
+            
+            <DivForOrganize>
+                <Title>Desenvolvido por:</Title>
+                <ListaDevs>
+                    <ItensDevs>Ricardo Araujo</ItensDevs>
+                    <ItensDevs>Igor Delespoti</ItensDevs>
+                    <ItensDevs>João Pedro Fonseca</ItensDevs>
+                </ListaDevs>
+            </DivForOrganize>
+
+
         </FooterDiv>
 
     )
@@ -53,3 +77,7 @@ class Footer extends React.Component {
 }
 
 export default Footer;
+{/* <ImgSocialIcons src={require("../imagens/logo.png")} alt={require}/>
+<ImgSocialIcons src={require("../imagens/logo.png")} alt={require}/>
+<ImgSocialIcons src={require("../imagens/logo.png")} alt={require}/>
+<ImgSocialIcons src={require("../imagens/logo.png")} alt={require}/> */}
