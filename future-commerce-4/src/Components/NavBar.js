@@ -96,4 +96,3 @@ return(
 }
 
 export default NavBar;
-// src={require("../icones/shopping-cart.png")} alt={"carrinho"}
