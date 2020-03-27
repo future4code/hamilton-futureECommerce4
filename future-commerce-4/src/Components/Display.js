@@ -1,8 +1,13 @@
 import React from "react";
 import styled from 'styled-components';
+import CarrinhoCompra from './CarrinhoCompra'
 
 
 const ContainerDisplay = styled.div`
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+ 
+ 
   main{
   
   display:grid;
@@ -45,80 +50,85 @@ button{
     color: #dfe6e9;
     font-size: 13px;
     background-color: #2d3436;
+:hover {
+background: darkorange;
+  } 
 }
 `
 
 class Display extends React.Component {
-    constructor(props) {
-        super(props);
 
-    }
 
-    render() {
-        return(
-            <ContainerDisplay> 
-                <main>
-                    <div id="box1" className="item">
-                    <img src={require("../imagens/1.png")}/>
-                    <a>Item 1<br/>R$2.000,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+inicioCascataFiltros=()=>{
+//filtroValor
+  const produtosFiltrados = this.props.itensVenda.filter((elemento)=>{
+    return ((Number(elemento.preco) >= this.props.filtroMenor) && 
+    (Number(elemento.preco) <= this.props.filtroMaior))
+  })
+  return this.filtroBusca(produtosFiltrados)  
+};
 
-                    <div id="box2" className="item">
-                    <img src={require("../imagens/2.jpg")}/>
-                    <a>Item 2<br/>R$8.999,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    
-                    </div>
+filtroBusca=(produtosFiltrados)=>{
+  const filtrados = produtosFiltrados.filter((elemento)=>{
+    const nomeMinusculo = elemento.nome.toLowerCase();
+    const textoBusca = this.props.textoBusca
+    
+    return (nomeMinusculo.includes(textoBusca));
+  })
+    return this.filtroOrdenacao(filtrados);
+};
 
-                    <div id="box3" className="item">
-                    <img src={require("../imagens/3.jpg")}/>
-                    <a>Item 3<br/>R$1.500,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
 
-                    <div id="box4" className="item">
-                    <img src={require("../imagens/4.png")}/>
-                    <a>Item 4<br/>R$30.000,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+filtroOrdenacao=(filtrados)=>{
 
-                    <div id="box5" className="item">
-                    <img src={require("../imagens/7.png")}/>
-                    <a>Item 5<br/>R$18.999,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+  switch (this.props.valorOrdenacao){
+    case "nenhum":
+      return this.insereItemVenda(filtrados);
 
-                    <div id="box6" className="item">
-                    <img src={require("../imagens/8.png")}/>
-                    <a>Item 6<br/>R$35.000,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+    case "crescente":
+      const listaCrescente = filtrados.sort( (a , b) => a.preco - b.preco);
+      return this.insereItemVenda(listaCrescente);
 
-                    <div id="box7" className="item">
-                    <img src={require("../imagens/9.jpg")}/>
-                    <a>Item 7<br/>R$25.350,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+    case "decrescente":
+      const listaDecrescente = filtrados.sort( (b , a) => a.preco - b.preco);
+      return this.insereItemVenda(listaDecrescente);
+  }
+};
 
-                    <div id="box8" className="item">
-                    <img src={require("../imagens/10.png")}/>
-                    <a>Item 8<br/>R$5.899,00</a>
-                    <br/>
-                    <button>Adicionar ao carrinho</button>
-                    </div>
+insereItemVenda=(produtosFiltrados)=>{
+  const auxiliar = produtosFiltrados.map((elemento,index)=>{
+    return (<div className="item" key={index}>
+            <img src={elemento.imagem}/>
+            <a>{elemento.nome}<br/>Ҩ Ϭ$ {elemento.preco}</a>
+            <br/>
+            <button onClick={()=>this.adicionarAoCarrinho(elemento.id)}>Adicionar ao carrinho</button>
+            </div>);
+  })
+  return auxiliar;
+};
 
-                </main>
-            </ContainerDisplay>    
-        )
-    };
+adicionarAoCarrinho=(id)=>{
+  this.props.adicionarAoCarrinho(id);
+};
+
+removeItemCarrinho=(id)=>{
+  this.props.removeItemCarrinho(id);
+};
+
+  render() {
+    return(
+      <ContainerDisplay> 
+        <main>
+          {this.inicioCascataFiltros()}
+        </main>
+
+      <CarrinhoCompra 
+      meuCarrinhoDisplay={this.props.meuCarrinho} 
+      removeItemCarrinho={this.removeItemCarrinho}/>
+
+      </ContainerDisplay>
+      );
+  };
 }
 
 export default Display;
