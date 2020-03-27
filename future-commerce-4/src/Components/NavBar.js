@@ -39,12 +39,6 @@ const CaixaInput = styled.div`
 `
 
 class NavBar extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-
-        }
-    }
 
 
 onChangeFiltroMenor = (event) => {
@@ -58,6 +52,11 @@ onChangeBusca = (event) =>{
 
     return this.props.onChangeSearch(texto.toLowerCase());
 }
+onChangeOrdenacao = (event)=>{
+    const ordenacao = event.target.value;
+
+    return this.props.onChangeOrdenacao(ordenacao);
+}
 
 
 
@@ -67,25 +66,26 @@ return(
     <Container>
         <CaixaInput>
             <label>Valor Mínimo: </label>
-            <input type="number" onChange={this.onChangeFiltroMenor}></input>
+            <input type="number" onChange={this.onChangeFiltroMenor} value={this.props.valorFiltroMenor}></input>
         </CaixaInput>
        
        <CaixaInput>
             <label>Valor Máximo: </label>
-            <input type="number" onChange={this.onChangeFiltroMaior}></input>
+            <input type="number" onChange={this.onChangeFiltroMaior} value={this.props.valorFiltroMaior}></input>
        </CaixaInput>
 
         <CaixaInput>
             <label>Filtrar por: </label>
-            <select>
-                <option>Preço: Crescente</option>
-                <option>Preço: Descrescente</option>
+            <select onChange={this.onChangeOrdenacao}>
+                <option value="nenhum">Nenhum</option>
+                <option value="crescente">Preço: Crescente</option>
+                <option value="decrescente">Preço: Decrescente</option>
             </select>
         </CaixaInput>
 
         <CaixaInput>
             <label>Buscar produto: </label>
-            <input onChange={this.onChangeBusca}></input>
+            <input onChange={this.onChangeBusca} value={this.props.valorTextoBusca}></input>
         </CaixaInput>
 
         <Carrinho>
@@ -112,8 +112,5 @@ return(
 
 }
 
-
-
 }
-
 export default NavBar;

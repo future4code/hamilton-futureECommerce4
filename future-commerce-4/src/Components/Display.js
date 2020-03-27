@@ -57,23 +57,16 @@ background: darkorange;
 `
 
 class Display extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
 
-        }
-    }
 
-filtroValor=()=>{
-
+inicioCascataFiltros=()=>{
+//filtroValor
   const produtosFiltrados = this.props.itensVenda.filter((elemento)=>{
     return ((Number(elemento.preco) >= this.props.filtroMenor) && 
     (Number(elemento.preco) <= this.props.filtroMaior))
-    
   })
-
   return this.filtroBusca(produtosFiltrados)  
-}
+};
 
 filtroBusca=(produtosFiltrados)=>{
   const filtrados = produtosFiltrados.filter((elemento)=>{
@@ -82,9 +75,25 @@ filtroBusca=(produtosFiltrados)=>{
     
     return (nomeMinusculo.includes(textoBusca));
   })
+    return this.filtroOrdenacao(filtrados);
+};
 
-  return this.insereItemVenda(filtrados);
-}
+
+filtroOrdenacao=(filtrados)=>{
+
+  switch (this.props.valorOrdenacao){
+    case "nenhum":
+      return this.insereItemVenda(filtrados);
+
+    case "crescente":
+      const listaCrescente = filtrados.sort( (a , b) => a.preco - b.preco);
+      return this.insereItemVenda(listaCrescente);
+
+    case "decrescente":
+      const listaDecrescente = filtrados.sort( (b , a) => a.preco - b.preco);
+      return this.insereItemVenda(listaDecrescente);
+  }
+};
 
 insereItemVenda=(produtosFiltrados)=>{
   const auxiliar = produtosFiltrados.map((elemento,index)=>{
@@ -93,45 +102,32 @@ insereItemVenda=(produtosFiltrados)=>{
             <a>{elemento.nome}<br/>Ҩ Ϭ$ {elemento.preco}</a>
             <br/>
             <button onClick={()=>this.adicionarAoCarrinho(elemento.id)}>Adicionar ao carrinho</button>
-            </div>)
+            </div>);
   })
   return auxiliar;
-}
+};
 
 adicionarAoCarrinho=(id)=>{
   this.props.adicionarAoCarrinho(id);
-}
+};
+
+removeItemCarrinho=(id)=>{
+  this.props.removeItemCarrinho(id);
+};
 
   render() {
-
-    let meuCarrinhoDisplay = this.props.meuCarrinho;
-    console.log("Meu carrinho" + meuCarrinhoDisplay);
-    console.log(meuCarrinhoDisplay);
-    console.log(this.props.meuCarrinho);
-    
-    
-    
-    // [{
-    //   id: 467893,
-    //   nome: "Espaçonaves Conceito",
-    //   preco: 25350.00
-    //   },
-    //   {
-    //   id: 111970,
-    //   nome: "Foguete infantil",
-    //   preco: 5899.00
-    //   }
-    // ];
-
-  
     return(
       <ContainerDisplay> 
         <main>
-          {this.filtroValor()}
+          {this.inicioCascataFiltros()}
         </main>
-      <CarrinhoCompra banana={meuCarrinhoDisplay}/>
+
+      <CarrinhoCompra 
+      meuCarrinhoDisplay={this.props.meuCarrinho} 
+      removeItemCarrinho={this.removeItemCarrinho}/>
+
       </ContainerDisplay>
-      )
+      );
   };
 }
 
