@@ -25,7 +25,7 @@ import styled from 'styled-components';
         `
         const ItensDevs = styled.li `
         	display: inline;
-	        padding: 0px 8px;
+	        padding: 0px 30px;
         `
         const DivForOrganize = styled.div `
         display: flex;
@@ -54,16 +54,16 @@ class Footer extends React.Component {
                 <ListaDevs>
                     <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-facebook"></i></LinksSocialWebs></ItensDevs>
                     <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-instagram"></i></LinksSocialWebs></ItensDevs>
-                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-google"></i></LinksSocialWebs></ItensDevs>
-                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-pinterest"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-bitcoin"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-amazon-pay"></i></LinksSocialWebs></ItensDevs>
+                    <ItensDevs><LinksSocialWebs href="#"><i className="fab fa-apple-pay"></i></LinksSocialWebs></ItensDevs>
                 </ListaDevs>
             </DivForOrganize>
             
             <DivForOrganize>
-                <Title>Desenvolvido por:</Title>
                 <ListaDevs>
                     <ItensDevs>Ricardo Araujo</ItensDevs>
-                    <ItensDevs>Igor Delespoti</ItensDevs>
+                    <ItensDevs>Igor Delesposti</ItensDevs>
                     <ItensDevs>João Pedro Fonseca</ItensDevs>
                 </ListaDevs>
             </DivForOrganize>

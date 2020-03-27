@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import CarrinhoCompra from './CarrinhoCompra'
+import CarrinhoCompra from './CarrinhoCompra';
 
 
 const ContainerDisplay = styled.div`
@@ -9,7 +9,6 @@ const ContainerDisplay = styled.div`
  
  
   main{
-  
   display:grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(4, 1fr);
@@ -22,13 +21,11 @@ const ContainerDisplay = styled.div`
 
 
 main>.item{
-
   margin: 5px;
   border: 1px dashed #fd79a8;
-  justify-content: center;
   align-items: center;
   width: 16vw;
-  height: 39vh;
+  height: 41vh;
 }
 
 main>.item>img{
@@ -38,6 +35,7 @@ main>.item>img{
 }
 
 main>div>a{
+  margin-left: 2px;
   text-decoration: none;
   color: #a29bfe;
 }
@@ -45,11 +43,15 @@ main>div>a{
 
 
 button{
+    margin-left: 7px;
     height: 6vh;
-    width: 15.8vw;
+    width: 15vw;
     color: #dfe6e9;
     font-size: 13px;
     background-color: #2d3436;
+    box-shadow: none;
+    border-style: none;
+    border-radius: 10px;
 :hover {
 background: darkorange;
   } 
@@ -99,8 +101,8 @@ insereItemVenda=(produtosFiltrados)=>{
   const auxiliar = produtosFiltrados.map((elemento,index)=>{
     return (<div className="item" key={index}>
             <img src={elemento.imagem}/>
-            <a>{elemento.nome}<br/>Ҩ Ϭ$ {elemento.preco}</a>
-            <br/>
+            <a>{elemento.nome}<br/>R$ {elemento.preco}</a>
+            <br/><br/>
             <button onClick={()=>this.adicionarAoCarrinho(elemento.id)}>Adicionar ao carrinho</button>
             </div>);
   })

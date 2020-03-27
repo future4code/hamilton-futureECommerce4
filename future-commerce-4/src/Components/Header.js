@@ -17,6 +17,7 @@ import styled from 'styled-components';
         const Title = styled.h1 `
             color: #2d3436;
             font-weight: bolder;
+            font-size: 40px;
         `
         const DivLogo = styled.div `
             grid-column: 2;
