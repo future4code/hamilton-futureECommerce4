@@ -39,6 +39,27 @@ const CaixaInput = styled.div`
 `
 
 class NavBar extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+
+        }
+    }
+
+
+onChangeFiltroMenor = (event) => {
+    return this.props.onChangeFiltroMenor(event.target.value)
+}
+onChangeFiltroMaior = (event) => {
+    return this.props.onChangeFiltroMaior(event.target.value)
+}
+onChangeBusca = (event) =>{
+    const texto = event.target.value;
+
+    return this.props.onChangeSearch(texto.toLowerCase());
+}
+
+
 
 render(){
 
@@ -46,12 +67,12 @@ return(
     <Container>
         <CaixaInput>
             <label>Valor Mínimo: </label>
-            <input></input>
+            <input type="number" onChange={this.onChangeFiltroMenor}></input>
         </CaixaInput>
        
        <CaixaInput>
             <label>Valor Máximo: </label>
-            <input></input>
+            <input type="number" onChange={this.onChangeFiltroMaior}></input>
        </CaixaInput>
 
         <CaixaInput>
@@ -64,7 +85,7 @@ return(
 
         <CaixaInput>
             <label>Buscar produto: </label>
-            <input></input>
+            <input onChange={this.onChangeBusca}></input>
         </CaixaInput>
 
         <Carrinho>
