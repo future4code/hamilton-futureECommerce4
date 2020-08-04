@@ -62,9 +62,7 @@ class Footer extends React.Component {
             
             <DivForOrganize>
                 <ListaDevs>
-                    <ItensDevs>Ricardo Araujo</ItensDevs>
-                    <ItensDevs>Igor Delesposti</ItensDevs>
-                    <ItensDevs>João Pedro Fonseca</ItensDevs>
+                    <ItensDevs>Go and travel to the Future.</ItensDevs>
                 </ListaDevs>
             </DivForOrganize>
 

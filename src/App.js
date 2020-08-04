@@ -41,7 +41,7 @@ class App extends React.Component {
         nome: "Viagem pela órbita da Terra",
         imagem: require("./imagens/12.jpg"),
         preco: 30000
-        }, 
+        },
         {
         id: 579147,
         nome: "Foguete com pet",
